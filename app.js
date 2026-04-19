@@ -1,7 +1,7 @@
 import { mcqs } from './data.js';
 
 let currentIndex = 0;
-let selectedOption = null;
+let selectedOptions = new Set();
 let showsolution = false;
 
 const questionText = document.getElementById('question-text');
@@ -18,7 +18,7 @@ const mainContainer = document.querySelector('main');
 
 function loadQuestion(index) {
   // Reset state
-  selectedOption = null;
+  selectedOptions.clear();
   showsolution = false;
   solutionContainer.classList.add('hidden');
   btnShowSolution.classList.add('hidden');
@@ -59,18 +59,24 @@ function loadQuestion(index) {
 function selectOption(element, optText, q) {
   if (showsolution) return; // prevent changing after solution is shown
 
-  // Deselect others
-  const allOptions = optionsContainer.querySelectorAll('.option');
-  allOptions.forEach(opt => opt.classList.remove('selected'));
+  // Toggle selection
+  if (selectedOptions.has(optText)) {
+    selectedOptions.delete(optText);
+    element.classList.remove('selected');
+  } else {
+    selectedOptions.add(optText);
+    element.classList.add('selected');
+  }
   
-  element.classList.add('selected');
-  selectedOption = optText;
-  
-  btnShowSolution.classList.remove('hidden');
+  if (selectedOptions.size > 0) {
+    btnShowSolution.classList.remove('hidden');
+  } else {
+    btnShowSolution.classList.add('hidden');
+  }
 }
 
 function revealSolution() {
-  if (!selectedOption) return;
+  if (selectedOptions.size === 0) return;
   showsolution = true;
 
   const q = mcqs[currentIndex];
