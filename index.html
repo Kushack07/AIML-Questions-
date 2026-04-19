@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning Exam Prep</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  
+  <div class="app-container">
+    <header class="header">
+      <h1>ML Final Exam Prep 🚀</h1>
+      <div class="progress-container">
+        <span id="progress-text">Question 1 of N</span>
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="question-container glass-panel">
+      <div id="question-header" class="question-header">
+        <span class="badge">Assignment MCQ</span>
+      </div>
+      <h2 id="question-text" class="question-text">Loading question...</h2>
+      
+      <div id="options-container" class="options-container">
+        <!-- Options will be injected here -->
+      </div>
+      
+      <div id="solution-container" class="solution-container hidden">
+        <div class="solution-header">
+          <h3>Explanation 💡</h3>
+        </div>
+        <p id="solution-text" class="solution-text"></p>
+      </div>
+
+      <div class="controls">
+        <button id="btn-prev" class="btn btn-secondary" disabled>Previous</button>
+        <button id="btn-show-solution" class="btn btn-primary hidden">Show Solution</button>
+        <button id="btn-next" class="btn btn-primary">Next Question</button>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
